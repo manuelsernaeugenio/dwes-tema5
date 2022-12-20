@@ -142,11 +142,13 @@ if ($usuario == null) {
 
 if ($_GET) {
     foreach ($posts as $post) {
+        $borrar = isset($usuario) ? "<a href='delete.php?id={$post['id']}'>Borrar</a>" : null;
+
         echo <<<END
         <figure>
             <div>{$post['nombre']} (subida por {$post['usuario']})</div>
             <img src="{$post['ruta']}" width="200px">
-            <a href="delete.php?id={$post['id']}">Borrar</a>
+            $borrar
         </figure>
     END;
     }
